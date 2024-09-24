@@ -1,5 +1,20 @@
+
+// TELAS
 let primeiraTela = document.getElementById("primeiraTela")
+let telaInfo = document.getElementById('telaInfo')
+let telaJobs = document.getElementById('telaJobs')
+let telaSkills = document.getElementById('telaSkills')
+let telaContact = document.getElementById('telaContact')
+
 let telaAtiva = 0
+
+// LIMPAR TELAS
+function limparTelas() {
+    telaInfo.style.display = "none"
+    telaJobs.style.display = "none"
+    telaSkills.style.display = "none"
+    telaContact.style.display = "none"
+}
 
 function ocultarPrimeiraTela() {
     if (telaAtiva == 0) {
@@ -24,21 +39,14 @@ let fundofake = document.getElementById('fundofake')
 
 foto.style.display = "none"
 
-function exibirInfo() {
-    if (foto.style.display == "block") {
-        // apertando 2 vez
-        foto.style.display = "none"
+function exibirTela(tela) {
+    if (tela.style.display == "block") {
+        tela.style.display = "none"
     } else {
-        // apertando 1 vezes
-        foto.style.display = "block"
-        foto.style.position = "absolute"
+        limparTelas()
+        tela.style.display = "block"
     }
 }
-
-
-
-
-
 
 // FLUXO BOTOES
 let botaoinfo = document.getElementById("botaoinfo")
