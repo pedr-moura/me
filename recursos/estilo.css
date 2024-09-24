@@ -3,11 +3,16 @@ body{
     background-color: #161616;
     color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    user-select: none; /* Para navegadores modernos */
+    -webkit-user-select: none; /* Para Safari */
+    -moz-user-select: none; /* Para Firefox */
+    -ms-user-select: none; /* Para Internet Explorer/Edge */
 }
 section {
     display: flex;
     position: absolute;
-    width: 90%;
+    width: 70%;
     height: 70%;
     background-color: #0C0C0C;
     left: 50%;
@@ -40,15 +45,12 @@ section {
       justify-content: center;
 
       p{
-        color: #0C0C0C;
         text-align: center;
-        border: 1px solid #161616;
         border-radius: 10px;
         padding: 5px;
         width: 35px;
         height: 35px;
-        background-color: #3644c2;
-    }
+      }
       .linkedin{
         -webkit-animation: slide-in-blurred-tl 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
         animation: slide-in-blurred-tl 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
@@ -62,31 +64,44 @@ section {
         animation: slide-in-blurred-br 1.8s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
       }
       .linkedin:hover, .github:hover, .whatsapp:hover{
-       svg{
-        color: white;
-        scale: 0.8;
-       } 
+        scale: 0.9;
       }
+      svg{
+        color: #2c3370;
+      }
+    }
+
+    #semfundo{
+    position: relative;
+    z-index: 1;
+    }
+    .comfundo{
+      -webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+      animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+      z-index: 0;
     }
     img{
        margin-bottom: 20px;
-        width: 260px;
+        width: 220px;
         border-radius: 50px;
         border: 2px solid #3645C2;
-        -webkit-animation: scale-in-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-        animation: scale-in-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }
-
-    .semfundo{
-      position: fixed;
-      left: 15%;
-  }
+    #fundofake{
+      width: 220px;
+      position: absolute;
+      background: rgb(2,0,36);
+      background: linear-gradient(325deg, rgba(2,0,36,1) 0%, rgba(54,69,194,1) 39%, rgba(0,212,255,1) 100%);
+      height: 220px;
+      margin-bottom: 20px;
+      border-radius: 50px;
+      z-index: -1;
+    }
     .title{
         font-size: 4vh;
         margin-left: 5%;
 
         span{
-            top: -20px;
+            top: -10px;
             position: relative;
             font-size: 50px;
             font-weight: 500;
@@ -116,24 +131,45 @@ section {
       svg{
         color: #3644c2;
       }
-      .info{
+      .info svg{
         -webkit-animation: blink-2 2s 0.5s infinite backwards;
         animation: blink-2 2s 0.5s infinite backwards;
       }
-      .jobs{
+      .jobs svg{
         -webkit-animation: blink-2 2s 1s infinite backwards;
         animation: blink-2 2s 1s infinite backwards;
       }
-      .skills{
+      .skills svg{
         -webkit-animation: blink-2 2s 1.5s infinite backwards;
         animation: blink-2 2s 1.5s infinite backwards;
       }
-      .contact{
+      .contact svg{
         -webkit-animation: blink-2 2s 2s infinite backwards;
         animation: blink-2 2s 2s infinite backwards;
       }
 
-}
+      .info svg:hover, .jobs svg:hover, .skills svg:hover, .contact svg:hover{
+        color: #7e8bff;
+      }
+
+      .pressionado{
+        animation: none;
+        color: white;
+      }
+
+      .legenda {
+        text-wrap: nowrap;
+        position: absolute;
+        background: #ffffff1f;
+        color: white;
+        padding: 2px 5px;
+        border-radius: 7px;
+        right: 65px;
+        margin-top: 4px;
+        -webkit-animation: fade-in 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+        animation: fade-in 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+      }
+    }
 
 .social{
     position: absolute;
@@ -172,39 +208,23 @@ section {
       opacity: 1;
     }
   }
-  @-webkit-keyframes scale-in-left {
-    0% {
-      -webkit-transform: scale(0);
-              transform: scale(0);
-      -webkit-transform-origin: 0% 50%;
-              transform-origin: 0% 50%;
-      opacity: 1;
-    }
-    100% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-      -webkit-transform-origin: 0% 50%;
-              transform-origin: 0% 50%;
-      opacity: 1;
-    }
-  }
-  @keyframes scale-in-left {
-    0% {
-      -webkit-transform: scale(0);
-              transform: scale(0);
-      -webkit-transform-origin: 0% 50%;
-              transform-origin: 0% 50%;
-      opacity: 1;
-    }
-    100% {
-      -webkit-transform: scale(1);
-              transform: scale(1);
-      -webkit-transform-origin: 0% 50%;
-              transform-origin: 0% 50%;
-      opacity: 1;
-    }
-  }
   
+  @-webkit-keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
   @-webkit-keyframes slide-in-blurred-tl {
     0% {
@@ -224,6 +244,7 @@ section {
       -webkit-filter: blur(0);
               filter: blur(0);
       opacity: 1;
+      color: #0C0C0C;
     }
   }
   @keyframes slide-in-blurred-tl {
@@ -244,6 +265,7 @@ section {
       -webkit-filter: blur(0);
               filter: blur(0);
       opacity: 1;
+      color: #0C0C0C;
     }
   }
   
@@ -265,6 +287,7 @@ section {
       -webkit-filter: blur(0);
               filter: blur(0);
       opacity: 1;
+      color: #0C0C0C;
     }
   }
   @keyframes slide-in-blurred-bottom {
@@ -285,6 +308,7 @@ section {
       -webkit-filter: blur(0);
               filter: blur(0);
       opacity: 1;
+      color: #0C0C0C;
     }
   }
   
@@ -306,6 +330,7 @@ section {
       -webkit-filter: blur(0);
               filter: blur(0);
       opacity: 1;
+      color: #0C0C0C;
     }
   }
   @keyframes slide-in-blurred-br {
@@ -326,6 +351,7 @@ section {
       -webkit-filter: blur(0);
               filter: blur(0);
       opacity: 1;
+      color: #0C0C0C;
     }
   }
   
@@ -352,11 +378,11 @@ section {
       scale: 1;
     }
     50% {
-      opacity: 0.2;
-      scale: 0.8;
+      opacity: 0.5;
+      scale: 1;
     }
     100% {
-      opacity: 1.4;
+      opacity: 1;
     }
   }
   @keyframes blink-2 {
@@ -365,12 +391,10 @@ section {
       scale: 1;
     }
     50% {
-      opacity: 0.2;
-      scale: 0.8;
+      opacity: 0.5;
+      scale: 1;
     }
     100% {
-      opacity: 1.5;
+      opacity: 1;
     }
   }
-  
-  
