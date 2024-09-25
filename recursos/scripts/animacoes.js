@@ -37,7 +37,8 @@ let foto = document.getElementById('perfil')
 let semfundo = document.getElementById('semfundo')
 let fundofake = document.getElementById('fundofake')
 
-foto.style.display = "none"
+foto.style.display = "block"
+semfundo.style.display = "none"
 
 function exibirTela(tela) {
     if (tela.style.display == "block") {
