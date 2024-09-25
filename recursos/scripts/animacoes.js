@@ -101,3 +101,51 @@ function exibirLegenda(legenda) {
         ocultarLegendas()
     }
 }
+
+// CARROSSEL
+
+let currentIndex = 0;
+
+function moveCarousel(direction) {
+    const cardsContainer = document.getElementById('cardsContainer');
+    const totalCards = cardsContainer.children.length;
+
+    currentIndex += direction;
+
+    if (currentIndex < 0) {
+        currentIndex = Math.ceil(totalCards / 2) - 1; 
+    } else if (currentIndex >= Math.ceil(totalCards / 2)) {
+        currentIndex = 0; 
+    }
+
+    const offset = -currentIndex * 340; 
+    cardsContainer.style.transform = `translateX(${offset}px)`;
+
+    updateDots(); // Atualiza as bolinhas
+}
+
+function updateDots() {
+    const totalCards = document.getElementById('cardsContainer').children.length;
+    const dotsContainer = document.getElementById('dotsContainer');
+    
+    // Limpa as bolinhas existentes
+    dotsContainer.innerHTML = '';
+
+    for (let i = 0; i < Math.ceil(totalCards / 2); i++) {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (i === currentIndex) {
+            dot.classList.add('active'); // Marca o ativo
+        }
+        dot.onclick = () => {
+            currentIndex = i; // Muda o índice ao clicar na bolinha
+            moveCarousel(0); // Atualiza a posição
+        };
+        dotsContainer.appendChild(dot);
+    }
+}
+
+// Inicializa as bolinhas ao carregar
+document.addEventListener('DOMContentLoaded', updateDots);
+
+
